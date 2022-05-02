@@ -45,13 +45,12 @@ bool Hello::runOnFunction(llvm::Function &F) {
     for(Function::iterator block = F.begin(); block != F.end(); block++) {
         for(BasicBlock::iterator inst = block->begin(); inst != block->end();inst++) {
             Instruction * Inst = inst;
-            errs() << *inst << " *****************\n";
-            if(isa<CallInst>(Inst)) {
+            if(isa<CallInst>(Inst) ) {
                 CallInst* callInst = dyn_cast<CallInst>(Inst);
-                errs() << "found call #" << functionCallIndex++ << '\n';
+                
                 Function *callee = callInst->getCalledFunction();
                 ValueToValueMapTy VMap;
-                if(callee->isDeclaration()) {
+                if(!callee || callee->isDeclaration()) {
                     continue;
                 }
                 std::set<int> constantArgs;
@@ -59,8 +58,11 @@ bool Hello::runOnFunction(llvm::Function &F) {
                 // processing caller arguments
                 Function::arg_iterator arg = callee->arg_begin();
                 std::vector<Value*> Args;
+                errs() << "inst: " << *inst << "\n";
+                errs() << "callee" << *callee;
                 errs() <<"number of args is: " << callInst->getNumArgOperands() << "\n";
                 for (unsigned int i = 0; i < callInst->getNumArgOperands(); ++i) {
+                	errs() << "here" << "\n";
                     if(isa<Constant>(callInst->getArgOperand(i))) {
                         //errs() << *(inst->getOperand(i)) << '\n';
                         errs() << "I found a constant argument index is: " << i << "\n";
@@ -78,8 +80,9 @@ bool Hello::runOnFunction(llvm::Function &F) {
                 //errs() << Args.size() << "\n";
                 if(!constantArgs.empty() && !callee->isDeclaration()) {
                     // Clone function
+                    errs() << "here2" << "\n";
                     Function* duplicateFunction = CloneFunction(callee, VMap, false);
-                    
+
                     duplicateFunction->setLinkage(GlobalValue::InternalLinkage);
                     callee->getParent()->getFunctionList().push_back(duplicateFunction);
                     //duplicateFunction->setLinkage(callee->getLinkage());
@@ -99,7 +102,6 @@ bool Hello::runOnFunction(llvm::Function &F) {
                 }
                 errs() << "end of a call\n";
             }
-            errs() << *inst << " next\n";
         }
     }
     return modified;
