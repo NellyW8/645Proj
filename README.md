@@ -6,7 +6,7 @@
 
 ## Deliverable List:
 
-1. Human readable IR produced by our pass:
+1. Human readable IR produced from our program is in the ProgramOutput folder:
     
     1). `example1.hello.ll`
 
@@ -19,6 +19,7 @@
 2. Source code:
     
     `Hello.cpp`
+3. Test cases and original human readable IR is in the testOutput folder:
 
 4. To remove dead arguments from functions. We used the `deadargelim` pass separately on the command line.
 
