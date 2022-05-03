@@ -18,7 +18,7 @@
 
 2. Source code:
     
-    `Hello.cpp`
+    [Hello.cpp](https://github.com/NellyW8/645Proj/tree/main/Hello.cpp)
 3. Test cases and original human readable IR is in the [TestOutputs](https://github.com/NellyW8/645Proj/tree/main/TestOutputs) folder:
 
 4. To remove dead arguments from functions. We used the `deadargelim` pass separately on the command line.
