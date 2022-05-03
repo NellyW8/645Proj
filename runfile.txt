@@ -1,0 +1,38 @@
+Please have WinSCP ready for transferring files
+in xyz run:
+
+###########the following creates human-readable file from example
+setenv PATH /afs/glue.umd.edu/class/old/enee/759c/llvm/llvm-3.4-install/opt/bin/:$PATH
+mkdir test_codes
+###########Here manually copy the files on ELMS into test_codes 
+cd test_codes
+clang -c -emit-llvm example1.c -o example1.bc
+llvm-dis example1.bc -o example1.ll
+clang -c -emit-llvm example2.c -o example2.bc
+llvm-dis example2.bc -o example2.ll
+clang -c -emit-llvm example3.c -o example3.bc
+llvm-dis example3.bc -o example3.ll
+clang -c -emit-llvm example3.c -o example3.bc
+llvm-dis example3.bc -o example3.ll
+cd ..
+cp -r /afs/glue.umd.edu/class/old/enee/759c/llvm/sample sample
+###########Here modify /sample/lib/Hello/Hello.cpp to our code
+mkdir obj
+mkdir opt
+
+
+###########the following commands will run your own pass, you can copy them and run them all together on putty
+
+cd obj
+../sample/configure --with-llvmsrc=/afs/glue.umd.edu/class/old/enee/759c/llvm/llvm-3.4.src --with-llvmobj=/afs/glue.umd.edu/class/old/enee/759c/llvm/llvm-3.4-install/obj --prefix=/homes/your-name/xyz/opt
+make clean
+gmake install
+setenv PATH /afs/glue/class/old/enee/759c/llvm/llvm-3.4-install/opt/bin/:$PATH
+opt -load ../opt/lib/libHello.so -hello ../test_codes/example1.bc -o example.1hello.bc
+opt -load ../opt/lib/libHello.so -hello ../test_codes/example2.bc -o example.2hello.bc
+opt -load ../opt/lib/libHello.so -hello ../test_codes/example3.bc -o example.3hello.bc
+opt -load ../opt/lib/libHello.so -hello ../test_codes/example4.bc -o example.4hello.bc
+llvm-dis example.1hello.bc -o example.1hello.ll
+llvm-dis example.2hello.bc -o example.2hello.ll
+llvm-dis example.3hello.bc -o example.3hello.ll
+llvm-dis example.4hello.bc -o example.4hello.ll
