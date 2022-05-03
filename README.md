@@ -24,3 +24,5 @@
 4. To remove dead arguments from functions. We used the `deadargelim` pass separately on the command line.
 
 opt --deadargelim < input bytecode > -o < output byte code >
+
+5. To run our program, please check [runfile.txt](https://github.com/NellyW8/645Proj/tree/main/runfile.txt) and follow the instructions.
