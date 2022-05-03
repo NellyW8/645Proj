@@ -63,7 +63,9 @@ bool Hello::runOnFunction(llvm::Function &F) {
                 errs() <<"number of args is: " << callInst->getNumArgOperands() << "\n";
                 for (unsigned int i = 0; i < callInst->getNumArgOperands(); ++i) {
                 	errs() << "here" << "\n";
-                    if(isa<Constant>(callInst->getArgOperand(i))) {
+                	Value* number = callInst->getArgOperand(i);
+                	errs() << "number" << *number<< "\n";
+                    if(isa<Constant>(number)) {
                         //errs() << *(inst->getOperand(i)) << '\n';
                         errs() << "I found a constant argument index is: " << i << "\n";
                         //constantArgs.insert(inst->getOperand(i));
@@ -72,12 +74,14 @@ bool Hello::runOnFunction(llvm::Function &F) {
                         VMap[arg] = temp;
                     }
                     else{
-                        //errs() << "copy argument index: " << i << "\n";
+                        errs() << "copy argument index: " << i << "\n";
                         Args.push_back(callInst->getArgOperand(i));
                     }
                     arg++;
                 }
-                //errs() << Args.size() << "\n";
+                errs() << Args.size() << "\n";
+
+
                 if(!constantArgs.empty() && !callee->isDeclaration()) {
                     // Clone function
                     errs() << "here2" << "\n";
