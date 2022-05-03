@@ -20,10 +20,8 @@ cp -r /afs/glue.umd.edu/class/old/enee/759c/llvm/sample sample
 mkdir obj
 mkdir opt
 
-
-###########the following commands will run your own pass, you can copy them and run them all together on putty
-
 cd obj
+###########the following commands will run your own pass, you can copy them and run them all together on putty
 ../sample/configure --with-llvmsrc=/afs/glue.umd.edu/class/old/enee/759c/llvm/llvm-3.4.src --with-llvmobj=/afs/glue.umd.edu/class/old/enee/759c/llvm/llvm-3.4-install/obj --prefix=/homes/your-name/xyz/opt
 make clean
 gmake install
