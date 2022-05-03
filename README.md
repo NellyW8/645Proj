@@ -19,7 +19,7 @@
 2. Source code:
     
     `Hello.cpp`
-3. Test cases and original human readable IR is in the testOutput folder:
+3. Test cases and original human readable IR is in the TestOutputs[a relative link](TestOutputs.md) folder:
 
 4. To remove dead arguments from functions. We used the `deadargelim` pass separately on the command line.
 
