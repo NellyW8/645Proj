@@ -6,7 +6,7 @@
 
 ## Deliverable List:
 
-1. Human readable IR produced from our program is in the ProgramOutput folder:
+1. Human readable IR produced from our program is in the ProgramOutputs folder:
     
     1). `example1.hello.ll`
 
