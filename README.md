@@ -8,13 +8,13 @@
 
 1. Human readable IR produced from our program is in the [ProgramOutputs](https://github.com/NellyW8/645Proj/tree/main/ProgramOutputs) folder:
     
-    1). `example1.hello.ll`
+    1). [example.1hello.ll](https://github.com/NellyW8/645Proj/tree/main/ProgramOutputs/example.1hello.ll)
 
-    2). `example2.hello.ll`
+    2). [example.2hello.ll](https://github.com/NellyW8/645Proj/tree/main/ProgramOutputs/example.2hello.ll)
 
-    3). `example3.hello.ll`
+    3). [example.3hello.ll](https://github.com/NellyW8/645Proj/tree/main/ProgramOutputs/example.3hello.ll)
 
-    4). `example4.hello.ll`
+    4). [example.4hello.ll](https://github.com/NellyW8/645Proj/tree/main/ProgramOutputs/example.4hello.ll)
 
 2. Source code:
     
