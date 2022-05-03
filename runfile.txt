@@ -1,4 +1,4 @@
-Please have WinSCP ready for transferring files
+Please have WinSCP ready for transferring files. You can download WinSCP here: https://winscp.net/eng/download.php
 in xyz run:
 
 ###########the following creates human-readable file from example
