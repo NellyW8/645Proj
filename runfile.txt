@@ -32,6 +32,10 @@ opt -load ../opt/lib/libHello.so -hello ../test_codes/example1.bc -o example.1he
 opt -load ../opt/lib/libHello.so -hello ../test_codes/example2.bc -o example.2hello.bc
 opt -load ../opt/lib/libHello.so -hello ../test_codes/example3.bc -o example.3hello.bc
 opt -load ../opt/lib/libHello.so -hello ../test_codes/example4.bc -o example.4hello.bc
+opt --deadargelim example.1hello.bc -o example.1hello.bc
+opt --deadargelim example.2hello.bc -o example.2hello.bc
+opt --deadargelim example.3hello.bc -o example.3hello.bc
+opt --deadargelim example.4hello.bc -o example.4hello.bc
 llvm-dis example.1hello.bc -o example.1hello.ll
 llvm-dis example.2hello.bc -o example.2hello.ll
 llvm-dis example.3hello.bc -o example.3hello.ll
