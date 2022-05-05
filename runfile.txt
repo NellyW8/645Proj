@@ -12,7 +12,7 @@ clang -c -emit-llvm example2.c -o example2.bc
 llvm-dis example2.bc -o example2.ll
 clang -c -emit-llvm example3.c -o example3.bc
 llvm-dis example3.bc -o example3.ll
-clang -c -emit-llvm example3.c -o example3.bc
+clang -c -emit-llvm example4.c -o example4.bc
 llvm-dis example4.bc -o example4.ll
 cd ..
 cp -r /afs/glue.umd.edu/class/old/enee/759c/llvm/sample sample
