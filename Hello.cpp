@@ -54,8 +54,6 @@ bool Hello::runOnFunction(llvm::Function &F) {
                     continue;
                 }
                 std::set<int> constantArgs;
-                //Inst->eraseFromParent();
-                // processing caller arguments
                 Function::arg_iterator arg = callee->arg_begin();
                 std::vector<Value*> Args;
                 errs() << "inst: " << *inst << "\n";
@@ -66,9 +64,7 @@ bool Hello::runOnFunction(llvm::Function &F) {
                 	Value* number = callInst->getArgOperand(i);
                 	errs() << "number" << *number<< "\n";
                     if(isa<Constant>(number)) {
-                        //errs() << *(inst->getOperand(i)) << '\n';
-                        errs() << "I found a constant argument index is: " << i << "\n";
-                        //constantArgs.insert(inst->getOperand(i));
+                        errs() << "constant argument index is: " << i << "\n";
                         constantArgs.insert(i);
                         Constant *temp = cast<Constant>(callInst->getArgOperand(i));
                         VMap[arg] = temp;
@@ -89,8 +85,6 @@ bool Hello::runOnFunction(llvm::Function &F) {
 
                     duplicateFunction->setLinkage(GlobalValue::InternalLinkage);
                     callee->getParent()->getFunctionList().push_back(duplicateFunction);
-                    //duplicateFunction->setLinkage(callee->getLinkage());
-                    //callInst->setCalledFunction(duplicateFunction); 
                     Instruction * New;
                     New = CallInst::Create(duplicateFunction, Args, "", Inst);
                     cast<CallInst>(New)->setCallingConv(callee->getCallingConv());
@@ -98,7 +92,6 @@ bool Hello::runOnFunction(llvm::Function &F) {
                     if(callInst->isTailCall())cast<CallInst>(New)->setTailCall();
                     New->setDebugLoc(Inst->getDebugLoc());	
                     New->takeName(Inst);
-                    //Inst->eraseFromParent();
                     Args.clear();
                     ReplaceInstWithInst(inst->getParent()->getInstList(), inst, cast<CallInst>(New));
                    
